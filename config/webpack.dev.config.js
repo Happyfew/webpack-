@@ -6,15 +6,15 @@ const friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'eval-cheap-module-source-map',
     devServer: {
         historyApiFallback: true,
         static: {
             directory: path.join(__dirname, '../dist'),
-        },
-        compress: true,
-        open: false,
-        hot: true,
+        }, // 监听文件
+        compress: true, // 压缩
+        open: false, // 默认打开浏览器
+        hot: true, // 热模块加载
     },
     module: {
         rules: [
@@ -39,8 +39,8 @@ module.exports = merge(common, {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '../public/index.html'),
-        inject: 'body',
+        template: path.resolve(__dirname, '../public/index.html'), // 生成html模板文件
+        inject: 'body', // 将生成的文件注入到body底部
         hash: false,
       }),
       new friendlyErrorsWebpackPlugin(),
