@@ -3,3 +3,4 @@
 /prettierrc.js
 /.prettierignore.js
 /.eslintrc.js
+/commitlint.config.js
